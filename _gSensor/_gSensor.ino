@@ -6,6 +6,9 @@ MQ135 gasSensor = MQ135(ANALOGPIN);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void loop() {
+
+  menuService();
+  
   if(readFlag){
     readFlag = false;
     _sData = gasSensor.getPPM();
@@ -18,5 +21,8 @@ void loop() {
     Serial.print("Gas ppm value : ");
     Serial.println(_sData);
   }
-  temp(_sData);
+  
+  if(!tempFlag) temp(_sData);
+
+  
 }

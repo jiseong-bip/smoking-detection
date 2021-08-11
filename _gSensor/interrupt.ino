@@ -10,8 +10,11 @@ ISR(TIMER1_COMPA_vect){
       printFlag = true;
       printTimer = _2_SECOND;
     }
-    if(!--tempTimer){
-      tempFlag = true;
-      tempTimer = _5_SECOND;
+    if(tempFlag){
+      if(!--tempTimer){
+        tempFlag = false;
+        tempTimer = _5_SECOND;
+        line2Clear();
+      }
     }
 }
