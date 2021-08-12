@@ -18,3 +18,9 @@ ISR(TIMER1_COMPA_vect){
       }
     }
 }
+
+void secondService(){
+    if(inputTimer){
+        inputTimer--;
+    }
+}

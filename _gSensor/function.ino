@@ -5,6 +5,19 @@ void updateLcd(){
   lcd.print(_sData);
 }
 
+boolean parseIntInput(String s, int* t){
+    if(s == "00"){        // toint doesn't work for 00
+        t[0] = 0;
+        return true;
+    }
+    t[0] = s.toInt();
+    if (t[0] == 0){
+        return false;
+    } else {
+        return true;
+    }
+}
+
 
 void temp(float _data){  
     if(_data > th_Arr[2]){
