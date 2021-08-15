@@ -1,5 +1,9 @@
 ISR(TIMER1_COMPA_vect){ 
-    interrupts();     
+    interrupts();
+    if (!--secondTimer){
+        secondTimer =  _1_SECOND;
+        secondService();    
+    }     
     if(!--readTimer){
       //read
       readFlag = true;
@@ -16,6 +20,11 @@ ISR(TIMER1_COMPA_vect){
         tempTimer = _5_SECOND;
         line2Clear();
       }
+    }
+    if(!--saveTimer){
+      //print
+      saveFlag = true;
+      saveTimer = _1_MIN;
     }
 }
 

@@ -16,11 +16,22 @@ void loop() {
     updateLcd();
   }
   
-  if(printFlag){
+  if (printFlag) {
     printFlag = false;
-    Serial.print("Gas ppm value : ");
-    Serial.println(_sData);
+    if (adminMode) {
+      Serial.print("Gas ppm value : ");
+      Serial.println(_sData);
+    }
+    newData(_sData);
   }
+
+if (saveFlag) {
+    saveFlag = false;
+    //Serial.printf("[D] %.2f [L] %d\n",getMax(),_level);
+    Serial.print("[D]");
+    Serial.print(getMax());
+    _level();
+  }// 1분에 한번 [D] max [L] level
   
   if(!tempFlag) temp(_sData);
 

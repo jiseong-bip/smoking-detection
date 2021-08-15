@@ -18,6 +18,32 @@ boolean parseIntInput(String s, int* t){
     }
 }
 
+void newData(float _data){
+  for(int i=arrSize-1; i>0; i--){
+    _DataArr[i] = _DataArr[i-1];
+  }
+  _DataArr[0] = _data;
+}
+
+float getMax(){  
+  float _max = 0;
+  for(int x=0; x<arrSize; x++){
+    if(_DataArr[x] > _max) _max = _DataArr[x];
+  }
+  return _max;
+}
+
+void _level(){
+  if(getMax() > th_Arr[2]){
+      Serial.println("[L] level 3");
+    }else if(getMax() > th_Arr[1]){
+      Serial.println("[L] level 2");
+    }else if(getMax() > th_Arr[0]){
+      Serial.println("[L] level 1");
+    }else if(getMax()){
+      Serial.println("[L] level 0");
+    }  
+}
 
 void temp(float _data){  
     if(_data > th_Arr[2]){
@@ -37,6 +63,7 @@ void temp(float _data){
         tempFlag = true;
     }  
 }
+
 void line1Clear(){
   lcd.setCursor(0, 0);
   lcd.print("                ");
