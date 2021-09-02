@@ -3,11 +3,15 @@
 #define _10_SECOND           10000/40
 #define _1_SECOND            1000/40
 #define _5_SECOND            5000/40
+#define _1_MIN               60000/40
 
 #define INPUT_TIME           30
 #define ANALOGPIN A0    
 #define RZERO 206.85 
 #define arrSize              60
+#define BUZ_Pin              9
+
+
 
 unsigned int inputTimer = 0;
 unsigned int readTimer = _2m_SECOND;

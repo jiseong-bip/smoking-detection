@@ -5,6 +5,14 @@ void updateLcd(){
   lcd.print(_sData);
 }
 
+void PlayAlert(){
+  for (int z = 0;z <= 100;z++){
+    int f = z * z;
+    tone(BUZ_Pin,f,100);
+    delay(10);
+  }
+}
+
 boolean parseIntInput(String s, int* t){
     if(s == "00"){        // toint doesn't work for 00
         t[0] = 0;
@@ -48,6 +56,7 @@ void _level(){
 void temp(float _data){  
     if(_data > th_Arr[2]){
       line2Clear();
+      PlayAlert();
       lcd.setCursor(0, 1);
       lcd.print("get out!!");
       tempFlag = true;
@@ -55,11 +64,13 @@ void temp(float _data){
         line2Clear();
         lcd.setCursor(0, 1);
         lcd.print("danger!!");
+        PlayAlert();
         tempFlag = true;
     }else if(_data > th_Arr[0]){
         line2Clear();
         lcd.setCursor(0, 1);
         lcd.print("warning");
+        PlayAlert();
         tempFlag = true;
     }  
 }
