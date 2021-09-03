@@ -1,9 +1,9 @@
 ISR(TIMER1_COMPA_vect){ 
-    interrupts();
+    interrupts(); 
     if (!--secondTimer){
-        secondTimer =  _1_SECOND;
-        secondService();    
-    }     
+      secondTimer =  _1_SECOND;
+      secondService();    
+    }
     if(!--readTimer){
       //read
       readFlag = true;
@@ -21,13 +21,20 @@ ISR(TIMER1_COMPA_vect){
         line2Clear();
       }
     }
+    if(buzTimer){
+      if(!--buzTimer){
+        buzFlag = false;
+        buzTimer = _2_SECOND;
+      }
+    }
     if(!--saveTimer){
       //print
       saveFlag = true;
       saveTimer = _1_MIN;
     }
+    
+    
 }
-
 void secondService(){
     if(inputTimer){
         inputTimer--;

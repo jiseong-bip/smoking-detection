@@ -2,20 +2,21 @@
 #include "MQ135.h"
 #include "gas.h"
 
+
+
+
 MQ135 gasSensor = MQ135(ANALOGPIN);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void loop() {
-
   menuService();
-  
-  if(readFlag){
+  if (readFlag) {
     readFlag = false;
     _sData = gasSensor.getPPM();
     //lcd update
     updateLcd();
   }
-  
+
   if (printFlag) {
     printFlag = false;
     if (adminMode) {
@@ -25,15 +26,17 @@ void loop() {
     newData(_sData);
   }
 
-if (saveFlag) {
+  if (saveFlag) {
     saveFlag = false;
     //Serial.printf("[D] %.2f [L] %d\n",getMax(),_level);
-    Serial.print("[D]");
+    Serial.print("[D] ");
     Serial.print(getMax());
     _level();
-  }// 1분에 한번 [D] max [L] level
-  
-  if(!tempFlag) temp(_sData);
 
-  
+
+  }// 1분에 한번 [D] max [L] level
+
+  if (!tempFlag) temp(_sData);
+  //if(!tempFlag) c_Arr();
+  if (!buzFlag) BUZ(_sData);
 }

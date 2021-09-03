@@ -70,6 +70,32 @@ void menuService(){
         adminMode = false;
         return;
     }
+     
+     
+     /*else if(mCommand == "@i"){
+     
+        Serial.print(F("INPUT TIME INTERVER (1~24 )")); 
+        Serial.printf("\nCurrent Setting : %d Hour \n", _myCycle/6); 
+        Serial.printf("Current Cnt : %d \n", _cycleCnt); 
+        readSerialLine(_input, 6, INPUT_TIME, true);
+        if (!parseIntInput(_input, &t)){
+            warnInvalidInput();
+            return;
+        } else if (t<1 || t>24){
+            warnInvalidInput();
+            return;
+        }
+        if(readAnswer(INPUT_TIME)){
+            _sinput = String (_input);
+            _myCycle = _sinput.toInt()*6;
+            _cycleCnt = _myCycle;
+            writeEEPROM(CYCLE_BASE, _myCycle);
+            Serial.printf("changed to: %d", _myCycle/6);
+            Serial.println();
+        }
+        return;    
+    }*/
+    
 }
 
 boolean readSerialLine(char* _input, int _bufSize, int _timer, boolean _echo){

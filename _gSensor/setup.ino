@@ -3,13 +3,13 @@ void setup(){
   pinMode(ANALOGPIN,INPUT);
   _rzero = gasSensor.getRZero();
   delay(3000);
-  pinMode(BUZ_Pin,OUTPUT);
   Serial.print("MQ135 RZERO Calibration Value : ");
   Serial.println(_rzero);
   lcd.begin();
   lcd.backlight();
   lcd.noCursor();
   startTimer40ms();
+  
   Serial.println("Setup Done..");
 }
 
