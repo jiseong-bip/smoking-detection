@@ -115,10 +115,3 @@ void line2Clear(){
   lcd.setCursor(0, 1);
   lcd.print("                ");
 }
-  lcd.print("                ");
-}
-
-void line2Clear(){
-  lcd.setCursor(0, 1);
-  lcd.print("                ");
-}
