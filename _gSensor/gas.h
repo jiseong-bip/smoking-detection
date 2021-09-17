@@ -31,7 +31,7 @@ boolean adminMode = false;
 boolean buzFlag = false;
 
 
-int th_Arr[3] = {10, 50, 100};
+int th_Arr[3] = {42, 65, 70};
 float _DataArr[arrSize];
 
 int _rzero; 
